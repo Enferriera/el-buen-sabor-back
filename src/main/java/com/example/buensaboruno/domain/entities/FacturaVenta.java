@@ -24,13 +24,18 @@ public class FacturaVenta extends Base{
     private BigDecimal descuento;
     private BigDecimal gastosEnvio;
     private BigDecimal totalVenta;
+
     @ManyToOne
     @JoinColumn(name="cliente_id")
     private Cliente cliente;
+
+    //OneToOne ??
     @OneToMany(cascade = CascadeType.ALL)
     private List<PedidoVenta> listaPedidoVenta;
-    @OneToMany(cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "facturaVenta",cascade = CascadeType.ALL)
     private List<FacturaVentaDetalle> listaFacturaVentaDetalle;
+
     @OneToOne
     @JoinColumn(name="datosMercadoPago_id")
     private DatosMercadoPago datosMercadoPago;

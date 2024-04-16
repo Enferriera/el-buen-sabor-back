@@ -16,8 +16,11 @@ import lombok.Setter;
 public class Usuario  extends Base{
     private String auth0Id;
     private String userName;
+
+    //mismo one to one ??
     @OneToOne(mappedBy = "usuario")
     private Cliente cliente;
+
     @OneToOne(mappedBy = "usuario")
     private Empleado empleado;
 }

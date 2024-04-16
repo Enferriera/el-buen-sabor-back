@@ -16,9 +16,11 @@ import java.util.List;
 @Getter
 public class Provincia extends Base {
     private String nombre;
+
     @ManyToOne
-    @JoinColumn(name="pais_id",referencedColumnName = "id")
+    @JoinColumn(name = "pais_id"/*, referencedColumnName = "id"*/)
     private Pais pais;
-    @OneToMany(mappedBy = "provincia", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "provincia"/*, cascade = CascadeType.ALL*/)
     private List<Localidad> listaLocalidades;
 }

@@ -15,10 +15,12 @@ import java.util.List;
 @Getter
 public class Localidad extends Base{
     private String nombre;
-    @OneToMany(mappedBy = "domicilio",cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "localidad"/*,cascade = CascadeType.ALL*/)
     private List<Domicilio> listaDomicilios;
+
     @ManyToOne
-    @JoinColumn(name="provincia_id")
+    @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
 }

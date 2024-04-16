@@ -14,4 +14,5 @@ import lombok.Setter;
 public class ImagenInsumo extends Base{
 
     private String denominacion;
+
 }

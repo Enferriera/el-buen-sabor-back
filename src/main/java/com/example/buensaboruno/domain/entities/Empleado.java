@@ -19,13 +19,16 @@ public class Empleado extends Base{
     private String apellido;
     private String telefono;
     private String email;
-    @ManyToOne
-    @JoinColumn(name="sucursalEmpresa_id")
-    private SucursalEmpresa sucursalEmpresa;
-    @OneToOne
-    @JoinColumn(name="usuario_id")
-    private Usuario usuario;
     private Rol perfil;
-    @OneToMany(cascade = CascadeType.ALL)
+
+    @ManyToOne
+    @JoinColumn(name = "sucursalEmpresa_id")
+    private SucursalEmpresa sucursalEmpresa;
+
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "empleado",cascade = CascadeType.ALL)
     private List<PedidoVenta> listaPedidoVenta;
 }

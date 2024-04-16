@@ -18,6 +18,7 @@ import java.util.List;
 public class UnidadMedida extends Base{
 
     private String denominacion;
-    @OneToMany(mappedBy = "unidadMedida", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "unidadMedida")
     private List<ArticuloInsumo> listaArticuloInsumo;
 }

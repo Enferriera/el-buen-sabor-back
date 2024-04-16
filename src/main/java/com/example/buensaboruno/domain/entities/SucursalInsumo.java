@@ -18,9 +18,11 @@ public class SucursalInsumo extends Base{
     private int stockActual;
     private int stockMinimo;
     private int stockMaximo;
+
     @ManyToOne
-    @JoinColumn(name="articuloInsumo_id")
+    @JoinColumn(name = "articuloInsumo_id")
     private ArticuloInsumo articuloInsumo;
+
     @ManyToOne
     @JoinColumn(name = "sucursalEmpresa_id")
     private SucursalEmpresa sucursalEmpresa;

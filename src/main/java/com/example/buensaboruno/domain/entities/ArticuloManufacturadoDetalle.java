@@ -16,9 +16,11 @@ import java.util.List;
 @Getter
 public class ArticuloManufacturadoDetalle extends Base{
     private double cantidad;
+
     @ManyToOne
-    @JoinColumn(name="articuloInsumo_id")
+    @JoinColumn(name = "articuloInsumo_id")
     private ArticuloInsumo articuloInsumo;
+
     @ManyToOne
     @JoinColumn(name = "articuloManufacturado_id")
     private ArticuloManufacturado articuloManufacturado;

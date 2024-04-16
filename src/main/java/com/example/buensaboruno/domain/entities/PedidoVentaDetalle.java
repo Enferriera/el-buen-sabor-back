@@ -17,17 +17,20 @@ import java.util.List;
 public class PedidoVentaDetalle extends Base{
     private double cantidad;
     private double subtotal;
+
     @ManyToOne
-    @JoinColumn(name="articuloManufacturado_id")
+    @JoinColumn(name = "articuloManufacturado_id")
     private ArticuloManufacturado articuloManufacturado;
 
     @ManyToOne
-    @JoinColumn(name="articuloInsumo_id")
+    @JoinColumn(name = "articuloInsumo_id")
     private ArticuloInsumo articuloInsumo;
+
     @ManyToOne
-    @JoinColumn(name="pedidoVenta_id")
+    @JoinColumn(name = "pedidoVenta_id")
     private PedidoVenta pedidoVenta;
+
     @ManyToOne
-    @JoinColumn(name="promocion_id")
+    @JoinColumn(name = "promocion_id")
     private Promocion promocion;
 }

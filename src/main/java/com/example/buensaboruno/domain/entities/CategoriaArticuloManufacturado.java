@@ -14,6 +14,7 @@ import lombok.Setter;
 @Getter
 public class CategoriaArticuloManufacturado  extends Base{
     private String denominacion;
+
     @OneToOne(mappedBy = "categoriaArticuloManufacturado")
     private ArticuloManufacturado articuloManufacturado;
 }

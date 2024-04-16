@@ -17,6 +17,7 @@ import java.util.List;
 @Getter
 public class Pais extends Base{
     private String nombre;
-    @OneToMany(mappedBy = "pais" ,cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "pais"/* ,cascade = CascadeType.ALL*/)
     private List<Provincia> listaProvincias;
 }

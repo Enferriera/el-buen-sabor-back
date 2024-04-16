@@ -15,14 +15,16 @@ import lombok.Setter;
 @Getter
 public class PromocionDetalle  extends Base{
     private int cantidad;
+
     @ManyToOne
-    @JoinColumn(name="articuloManufacturado_id")
+    @JoinColumn(name = "articuloManufacturado_id")
     private ArticuloManufacturado articuloManufacturado;
 
     @ManyToOne
-    @JoinColumn(name="articuloInsumo_id")
+    @JoinColumn(name = "articuloInsumo_id")
     private ArticuloInsumo articuloInsumo;
+
     @ManyToOne
-    @JoinColumn(name="promocion_id")
+    @JoinColumn(name = "promocion_id")
     private Promocion promocion;
 }

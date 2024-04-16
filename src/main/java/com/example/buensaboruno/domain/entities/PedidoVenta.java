@@ -31,19 +31,26 @@ public class PedidoVenta extends Base{
     private TipoEnvio tipoEnvio;
     private FormaPago formaPago;
     private LocalDate fechaPedido;
+
     @ManyToOne
     @JoinColumn(name="empleado_id")
     private Empleado empleado;
+
     @ManyToOne
     @JoinColumn(name="cliente_id")
     private Cliente cliente;
+
+    //si el empleado ya lo tiene, es necesario?
     @ManyToOne
-    @JoinColumn(name="sucursalEmpresa_id")
+    @JoinColumn(name = "sucursalEmpresa_id")
     private SucursalEmpresa sucursalEmpresa;
+
+    //no sería un pedido tiene una factura OneToOne
     @ManyToOne
     @JoinColumn(name="facturaVenta_id")
     private FacturaVenta facturaVenta;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<PedidoVentaDetalle> listaPedidoVentaDetalle=new ArrayList<>();
+
+    @OneToMany(mappedBy = "pedidoVenta", cascade = CascadeType.ALL)
+    private List<PedidoVentaDetalle> listaPedidoVentaDetalle/*=new ArrayList<>()*/;
 
 }

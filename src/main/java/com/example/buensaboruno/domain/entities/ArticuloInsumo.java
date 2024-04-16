@@ -19,16 +19,32 @@ public class ArticuloInsumo extends Base{
     private double precioCompra;
     private double precioVenta;
     private boolean esParaElaborar;
+
     @ManyToOne
-    @JoinColumn(name="unidadMedida_id")
-    private UnidadMedida    unidadMedida;
-    @OneToMany(mappedBy = "articuloInsumo", cascade = CascadeType.ALL)
+    @JoinColumn(name = "unidadMedida_id")
+    private UnidadMedida unidadMedida;
+
+    @OneToMany(mappedBy = "articuloInsumo")
     private List<SucursalInsumo> listaSucursalInsumo;
-    @OneToOne
-    @JoinColumn(name="imagenInsumo_id")
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "imagenInsumo_id")
     private ImagenInsumo imagenInsumo;
+
+    //No sería un articulo puede tener mucha categorias o un articulo puede tener una categoria
     @OneToMany(mappedBy = "articuloInsumo" , cascade = CascadeType.ALL)
     private List<CategoriaArticulo> listaCategoriaArticulo;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<PedidoVentaDetalle> listaPedidoVentaDetalle=new ArrayList<>();
+
+    //bidireccionalidad
+    @OneToMany(mappedBy = "articuloInsumo")
+    private List<PedidoVentaDetalle> listaPedidoVentaDetalle/*=new ArrayList<>()*/;
+
+    @OneToMany(mappedBy = "articuloInsumo")
+    private List<FacturaVentaDetalle> listaFacturaVentaDetalle;
+
+    @OneToMany(mappedBy = "articuloInsumo")
+    private List<PromocionDetalle> listaPromocionDetalle;
+
+    @OneToMany(mappedBy = "articuloInsumo")
+    private List<ArticuloManufacturadoDetalle> listaArticuloManufacturadoDetalle;
 }

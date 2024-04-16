@@ -22,6 +22,7 @@ public class DatosMercadoPago extends Base{
     private String payment_method_id;
     private String status;
     private String status_detail;
+
     @OneToOne(mappedBy = "datosMercadoPago")
     private FacturaVenta facturaVenta;
 }

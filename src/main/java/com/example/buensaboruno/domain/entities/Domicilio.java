@@ -19,9 +19,15 @@ public class Domicilio extends Base{
     private String calle;
     private int numero;
     private int cp;
+
     @ManyToOne
-    @JoinColumn(name="localidad_id")
+    @JoinColumn(name = "localidad_id")
     private Localidad localidad;
+
+    //one to one iguales??
     @OneToOne(mappedBy = "domicilio")
     private SucursalEmpresa sucursalEmpresa;
+
+    @OneToOne(mappedBy = "domicilio")
+    private Cliente cliente;
 }

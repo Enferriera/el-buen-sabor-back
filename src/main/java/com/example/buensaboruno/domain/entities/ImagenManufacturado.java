@@ -15,7 +15,8 @@ import lombok.Setter;
 @Getter
 public class ImagenManufacturado  extends Base{
     private String denominacion;
+
     @ManyToOne
-    @JoinColumn(name="articuloManufacturado_id")
+    @JoinColumn(name = "articuloManufacturado_id")
     private ArticuloManufacturado articuloManufacturado;
 }

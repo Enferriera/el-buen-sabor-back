@@ -15,12 +15,15 @@ import java.util.List;
 @Getter
 public class CategoriaArticulo  extends Base{
     private String denominacion;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoria_articulo_padre_id")
-    private CategoriaArticulo categoriaArticuloPadre=null;
+    @JoinColumn(name = "categoriaArticuloPadre_id")
+    private CategoriaArticulo categoriaArticuloPadre/*=null*/;
 
     @OneToMany(mappedBy = "categoriaArticuloPadre", cascade = CascadeType.ALL)
     private List<CategoriaArticulo> listaCategoriaArticulo;
+
+    //una categoria puede tener muchos articulos??
     @ManyToOne
     @JoinColumn(name="articuloInsumo_id")
     private ArticuloInsumo articuloInsumo;

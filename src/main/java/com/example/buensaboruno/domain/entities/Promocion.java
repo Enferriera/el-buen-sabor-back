@@ -22,6 +22,10 @@ public class Promocion  extends Base{
     private LocalDate fechaDesde;
     private LocalDate fechaHasta;
     private double descuento;
+
     @OneToMany(cascade = CascadeType.ALL)
-    private List<PromocionDetalle> listaPromocionDetalle=new ArrayList<>();
+    private List<PromocionDetalle> listaPromocionDetalle/*=new ArrayList<>()*/;
+
+    @OneToMany(mappedBy = "promocion")
+    private List<PedidoVentaDetalle> listaPedidoVentaDetalle;
 }
