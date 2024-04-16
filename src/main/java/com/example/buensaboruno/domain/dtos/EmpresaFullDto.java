@@ -1,8 +1,5 @@
 package com.example.buensaboruno.domain.dtos;
 
-import com.example.buensaboruno.domain.entities.SucursalEmpresa;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,11 +11,11 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
-public class EmpresaDto {
+public class EmpresaFullDto extends BaseFullDto {
     private Long id;
     private String nombre;
     private String razonSocial;
     private int cuil;
 
-    private List<SucursalEmpresaDto> listaSucursalEmpresa;
+    private List<SucursalEmpresaFullDto> listaSucursalEmpresa;
 }

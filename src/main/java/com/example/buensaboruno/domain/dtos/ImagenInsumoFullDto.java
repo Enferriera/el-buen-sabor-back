@@ -9,5 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-public class PedidoVentaDto {
+public class ImagenInsumoFullDto extends BaseFullDto {
+    private String denominacion;
 }
