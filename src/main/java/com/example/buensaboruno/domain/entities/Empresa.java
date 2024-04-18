@@ -26,5 +26,6 @@ public class Empresa extends Base{
 
     @OneToMany
     @JoinColumn(name="empresa_id")
+    @Builder.Default
     private Set<Sucursal> listaSucursal= new HashSet<>();
 }

@@ -28,9 +28,11 @@ public class Sucursal extends  Base{
 
     @OneToMany
     @JoinColumn(name="sucursal_id")
+    @Builder.Default
     private Set<Promocion> listaPromocion= new HashSet<>();
 
     @OneToMany
     @JoinColumn(name="sucursal_id")
+    @Builder.Default
     private Set<Categoria> listaCategoria= new HashSet<>();
 }

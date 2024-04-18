@@ -25,6 +25,7 @@ public class Cliente extends Base{
 
     @OneToMany
     @JoinColumn(name="cliente_id")
+    @Builder.Default
     private Set<Pedido> listaPedido=new HashSet<>();
 
 }

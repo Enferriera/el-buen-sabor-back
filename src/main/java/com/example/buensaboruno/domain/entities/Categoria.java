@@ -17,19 +17,20 @@ import java.util.Set;
 public class Categoria extends Base{
     private String denominacion;
 
-
-
     @OneToMany
     @JoinColumn(name="categoria_id")
+    @Builder.Default
     private Set<Categoria> listaCategoria= new HashSet<>();
 
 
     @OneToMany
     @JoinColumn(name="categoria_id")
+    @Builder.Default
     private Set<ArticuloInsumo> listaArticuloInsumo=new HashSet<>();
 
     @OneToMany
     @JoinColumn(name="categoria_id")
+    @Builder.Default
     private Set<ArticuloManufacturado> listaArticuloManufacturado=new HashSet<>();
 
 

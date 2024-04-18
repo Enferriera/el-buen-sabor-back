@@ -24,6 +24,7 @@ public class ArticuloManufacturado  extends Base{
 
     @OneToMany
     @JoinColumn(name="articuloManufacturado_id")
+    @Builder.Default
     private Set<Imagen> listaImagenManufacturado=new HashSet<>();
 
 
@@ -31,7 +32,17 @@ public class ArticuloManufacturado  extends Base{
     private UnidadMedida unidadMedida;
 
     @ManyToMany(mappedBy = "listaArticuloManufacturado")
+    @Builder.Default
     private Set<Promocion> estaEnPromociones = new HashSet<>();
+
+    @ManyToMany
+    //SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY
+    @JoinTable(name = "articuloManufacturado_articuloInsumo",
+            joinColumns = @JoinColumn(name = "articuloManufacturado_id"),
+            inverseJoinColumns = @JoinColumn(name = "articuloInsumo_id"))
+    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
+    @Builder.Default
+    private Set<ArticuloInsumo> articulosInsumos = new HashSet<>();
 
 
 }

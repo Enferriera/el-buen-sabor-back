@@ -23,17 +23,19 @@ public class Promocion  extends Base{
     private LocalDate fechaHasta;
     private LocalTime horaDesde;
     private LocalTime horaHasta;
-    private Integer descuento;
+    private Double descuento;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "promocion_articuloInsumo",
             joinColumns = @JoinColumn(name = "promocion_id"),
             inverseJoinColumns = @JoinColumn(name = "articuloInsumo_id"))
+    @Builder.Default
     private Set<ArticuloInsumo> listaArticuloInsumo=new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "promocion_articuloManufacturado",
             joinColumns = @JoinColumn(name = "promocion_id"),
             inverseJoinColumns = @JoinColumn(name = "articuloManufacturado_id"))
+    @Builder.Default
     private Set<ArticuloManufacturado> listaArticuloManufacturado= new HashSet<>();
 }
