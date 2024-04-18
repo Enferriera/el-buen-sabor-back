@@ -1,10 +1,7 @@
 package com.example.buensaboruno.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,14 +10,14 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
+@Builder
 public class Localidad extends Base{
     private String nombre;
 
-    @OneToMany(mappedBy = "localidad"/*,cascade = CascadeType.ALL*/)
-    private List<Domicilio> listaDomicilios;
+
 
     @ManyToOne
-    @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
 }

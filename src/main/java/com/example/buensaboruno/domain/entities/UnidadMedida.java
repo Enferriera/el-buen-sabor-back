@@ -3,10 +3,7 @@ package com.example.buensaboruno.domain.entities;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -15,10 +12,11 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
+@Builder
 public class UnidadMedida extends Base{
 
     private String denominacion;
 
-    @OneToMany(mappedBy = "unidadMedida")
-    private List<ArticuloInsumo> listaArticuloInsumo;
+
 }

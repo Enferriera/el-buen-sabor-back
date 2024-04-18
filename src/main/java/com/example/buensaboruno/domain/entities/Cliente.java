@@ -1,19 +1,19 @@
 package com.example.buensaboruno.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
+@Builder
 public class Cliente extends Base{
     private String nombre;
     private String apellido;
@@ -21,16 +21,10 @@ public class Cliente extends Base{
     private String email;
 
     @OneToOne
-    @JoinColumn(name="usuario_id")
     private Usuario usuario;
 
-    @OneToOne
-    @JoinColumn(name="domicilio_id")
-    private Domicilio domicilio;
+    @OneToMany
+    @JoinColumn(name="cliente_id")
+    private Set<Pedido> listaPedido=new HashSet<>();
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<PedidoVenta> listaPedidoVenta;
-
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<FacturaVenta> listaFacturaVenta/*=new ArrayList<>()*/;
 }

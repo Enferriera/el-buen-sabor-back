@@ -1,49 +1,37 @@
 package com.example.buensaboruno.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
+@Builder
 public class ArticuloManufacturado  extends Base{
 
     private String denominacion;
     private String descripcion;
     private double precioVenta;
-    private double precioCosto;
-    private Integer tiempoEstimado;
+    private Integer tiempoEstimadoMinutos;
 
-    @ManyToOne
-    @JoinColumn(name = "sucursalEmpresa_id")
-    private SucursalEmpresa sucursalEmpresa;
 
-    //muchos articulos no podrían tener la misma categoria?? ManyToOne
-    @OneToOne
-    @JoinColumn(name = "categoriaArticuloManufacturado_id")
-    private CategoriaArticuloManufacturado categoriaArticuloManufacturado;
+    @OneToMany
+    @JoinColumn(name="articuloManufacturado_id")
+    private Set<Imagen> listaImagenManufacturado=new HashSet<>();
 
-    @OneToMany(mappedBy = "articuloManufacturado")
-    private List<ImagenManufacturado> listaImagenManufacturado;
 
-    @OneToMany(mappedBy = "articuloManufacturado", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ArticuloManufacturadoDetalle> articulosManufacturadosdetalles/* = new ArrayList<>()*/;
+   @ManyToOne
+    private UnidadMedida unidadMedida;
 
-    //bidireccional
-    @OneToMany(mappedBy = "articuloManufacturado")
-    private List<PedidoVentaDetalle> listaPedidoVentaDetalle;
+    @ManyToMany(mappedBy = "listaArticuloManufacturado")
+    private Set<Promocion> estaEnPromociones = new HashSet<>();
 
-    @OneToMany(mappedBy = "articuloManufacturado")
-    private List<FacturaVentaDetalle> listaFacturaVentaDetalle;
 
-    @OneToMany(mappedBy = "articuloManufacturado")
-    private List<PromocionDetalle> listaPromocionDetalle;
 }

@@ -1,50 +1,37 @@
 package com.example.buensaboruno.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
+@Builder
 public class ArticuloInsumo extends Base{
     private String denominacion;
-    private double precioCompra;
-    private double precioVenta;
+    private Double precioCompra;
+    private Double precioVenta;
+    private Integer stockMaximo;
+    private Integer stockActual;
     private boolean esParaElaborar;
 
+    @ManyToMany(mappedBy = "listaArticuloInsumo")
+    private Set<Promocion> estaEnPromociones = new HashSet<>();
+
     @ManyToOne
-    @JoinColumn(name = "unidadMedida_id")
     private UnidadMedida unidadMedida;
 
-    @OneToMany(mappedBy = "articuloInsumo")
-    private List<SucursalInsumo> listaSucursalInsumo;
+    @OneToMany
+    @JoinColumn(name = "articuloInsumo_id")
+    private Set<Imagen> listaImagen =new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "imagenInsumo_id")
-    private ImagenInsumo imagenInsumo;
 
-    //No sería un articulo puede tener mucha categorias o un articulo puede tener una categoria
-    @OneToMany(mappedBy = "articuloInsumo" , cascade = CascadeType.ALL)
-    private List<CategoriaArticulo> listaCategoriaArticulo;
 
-    //bidireccionalidad
-    @OneToMany(mappedBy = "articuloInsumo")
-    private List<PedidoVentaDetalle> listaPedidoVentaDetalle/*=new ArrayList<>()*/;
 
-    @OneToMany(mappedBy = "articuloInsumo")
-    private List<FacturaVentaDetalle> listaFacturaVentaDetalle;
-
-    @OneToMany(mappedBy = "articuloInsumo")
-    private List<PromocionDetalle> listaPromocionDetalle;
-
-    @OneToMany(mappedBy = "articuloInsumo")
-    private List<ArticuloManufacturadoDetalle> listaArticuloManufacturadoDetalle;
 }

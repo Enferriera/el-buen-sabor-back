@@ -2,25 +2,29 @@ package com.example.buensaboruno.domain.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@ToString
+@Builder
 public class Empresa extends Base{
 
     private String nombre;
     private String razonSocial;
-    private int cuil;
+    private Integer cuil;
 
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-    private List<SucursalEmpresa> listaSucursalEmpresa;
+    @OneToMany
+    @JoinColumn(name="empresa_id")
+    private Set<Sucursal> listaSucursal= new HashSet<>();
 }
