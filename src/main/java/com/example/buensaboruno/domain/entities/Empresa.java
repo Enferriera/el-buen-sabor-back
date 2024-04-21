@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.envers.Audited;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,7 +19,8 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@Builder
+@SuperBuilder
+@Audited
 public class Empresa extends Base{
 
     private String nombre;
@@ -27,5 +30,5 @@ public class Empresa extends Base{
     @OneToMany
     @JoinColumn(name="empresa_id")
     @Builder.Default
-    private Set<Sucursal> listaSucursal= new HashSet<>();
+    private Set<Sucursal> Sucursales= new HashSet<>();
 }

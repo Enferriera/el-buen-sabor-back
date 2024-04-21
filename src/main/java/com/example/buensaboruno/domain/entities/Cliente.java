@@ -2,6 +2,9 @@ package com.example.buensaboruno.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +16,8 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@Builder
+@SuperBuilder
+@Audited
 public class Cliente extends Base{
     private String nombre;
     private String apellido;
@@ -23,9 +27,24 @@ public class Cliente extends Base{
     @OneToOne
     private Usuario usuario;
 
-    @OneToMany
-    @JoinColumn(name="cliente_id")
-    @Builder.Default
-    private Set<Pedido> listaPedido=new HashSet<>();
+    @OneToOne
+    @NotAudited
+    private Imagen imagen;
 
+    @OneToMany
+    //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
+    //DE ESTA MANERA PONE EL FOREIGN KEY 'cliente_id' EN LA TABLA DE LOS MANY
+    @JoinColumn(name = "cliente_id")
+    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
+    @Builder.Default
+    private Set<Pedido> pedidos = new HashSet<>();
+
+    @ManyToMany
+    //SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY
+    @JoinTable(name = "cliente_domicilio",
+            joinColumns = @JoinColumn(name = "cliente_id"),
+            inverseJoinColumns = @JoinColumn(name = "domicilio_id"))
+    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
+    @Builder.Default
+    private Set<Domicilio> domicilios = new HashSet<>();
 }

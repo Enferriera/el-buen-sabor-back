@@ -5,6 +5,8 @@ import com.example.buensaboruno.domain.enums.FormaPago;
 import com.example.buensaboruno.domain.enums.TipoEnvio;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.envers.Audited;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,7 +19,8 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@Builder
+@SuperBuilder
+@Audited
 public class Pedido extends Base{
 
     private LocalTime horaEstimadaFinalizacion;
@@ -31,13 +34,18 @@ public class Pedido extends Base{
     @ManyToOne
     private Domicilio domicilio;
 
+    @ManyToOne
+    private Sucursal sucursal;
 
     @OneToOne
     private Factura factura;
 
+
     @OneToMany(cascade = CascadeType.ALL)
+    //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
+    //DE ESTA MANERA PONE EL FOREIGN KEY 'pedido_id' EN LA TABLA DE LOS MANY
     @JoinColumn(name = "pedido_id")
+    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
     @Builder.Default
     private Set<DetallePedido> detallePedidos = new HashSet<>();
-
 }

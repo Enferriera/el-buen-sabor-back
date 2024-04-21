@@ -1,23 +1,22 @@
 package com.example.buensaboruno.domain.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
-@Setter
+@AllArgsConstructor
 @Getter
+@Setter
 @ToString
 @SuperBuilder
+@Entity
 @Audited
-public class DetallePedido extends Base{
+public class ArticuloManufacturadoDetalle extends Base{
     private Integer cantidad;
-    private Double subTotal;
 
     @ManyToOne
-    private Articulo articulo;
-
+    private ArticuloInsumo articuloInsumo;
 }

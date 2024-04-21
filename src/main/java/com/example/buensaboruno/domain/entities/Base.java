@@ -5,6 +5,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 
@@ -14,10 +15,11 @@ import java.io.Serializable;
 @Setter
 @Getter
 @ToString
-public class Base implements Serializable {
+@SuperBuilder
+public abstract class Base implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    protected Long id;
 
-    private boolean isActive;
+    protected boolean isActive;
 }

@@ -3,6 +3,8 @@ package com.example.buensaboruno.domain.entities;
 import com.example.buensaboruno.domain.enums.FormaPago;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.envers.Audited;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,7 +16,8 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-@Builder
+@SuperBuilder
+@Audited
 public class Factura extends Base{
     private LocalDate fechaFcturacion;
     private Integer mpPaymentId;

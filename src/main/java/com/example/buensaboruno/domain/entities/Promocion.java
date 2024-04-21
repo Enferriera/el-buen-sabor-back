@@ -1,7 +1,11 @@
 package com.example.buensaboruno.domain.entities;
 
+import com.example.buensaboruno.domain.enums.TipoPromocion;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,26 +20,39 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@Builder
+@SuperBuilder
+@Audited
 public class Promocion  extends Base{
     private String denominacion;
     private LocalDate fechaDesde;
     private LocalDate fechaHasta;
     private LocalTime horaDesde;
     private LocalTime horaHasta;
-    private Double descuento;
+    private String descripcionDescuento;
+    private Double precioPromocional;
+    private TipoPromocion tipoPromocion;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "promocion_articuloInsumo",
-            joinColumns = @JoinColumn(name = "promocion_id"),
-            inverseJoinColumns = @JoinColumn(name = "articuloInsumo_id"))
-    @Builder.Default
-    private Set<ArticuloInsumo> listaArticuloInsumo=new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "promocion_articuloManufacturado",
+    //SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY
+    @JoinTable(name = "promocion_articulo",
             joinColumns = @JoinColumn(name = "promocion_id"),
-            inverseJoinColumns = @JoinColumn(name = "articuloManufacturado_id"))
+            inverseJoinColumns = @JoinColumn(name = "articulo_id"))
+    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
     @Builder.Default
-    private Set<ArticuloManufacturado> listaArticuloManufacturado= new HashSet<>();
+    private Set<Articulo> articulos = new HashSet<>();
+
+    @OneToMany
+    //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
+    //DE ESTA MANERA PONE EL FOREIGN KEY 'promocion_id' EN LA TABLA DE LOS MANY
+    @JoinColumn(name = "promocion_id")
+    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
+    @Builder.Default
+    @NotAudited
+    private Set<Imagen> imagenes = new HashSet<>();
+
+    @ManyToMany(mappedBy = "promociones")
+    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
+    @Builder.Default
+    private Set<Sucursal> sucursales = new HashSet<>();
 }
