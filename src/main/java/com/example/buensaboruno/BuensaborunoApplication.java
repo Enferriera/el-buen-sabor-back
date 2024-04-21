@@ -25,6 +25,10 @@ public class BuensaborunoApplication {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
+
+	@Autowired
+	private PromocionDetalleRepository promocionDetalleRepository;
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
