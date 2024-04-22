@@ -14,6 +14,6 @@ public class BaseFullDto {
 
     private Long id;
 
-    private boolean isActive;
+    protected boolean isActive;
 
 }

@@ -1,8 +1,6 @@
 package com.example.buensaboruno.domain.dtos;
 
 
-import com.example.buensaboruno.domain.entities.DatosMercadoPago;
-
 import com.example.buensaboruno.domain.enums.FormaPago;
 
 import lombok.AllArgsConstructor;
@@ -21,18 +19,10 @@ import java.util.List;
 public class FacturaVentaFullDto extends BaseFullDto {
 
     private LocalDate fechaFcturacion;
-    private int numeroComprobante;
+    private Integer mpPaymentId;
+    private Integer mpMerchantOrderId;
+    private String mpPreferenceId;
+    private String mpPaymentType;
     private FormaPago formaPago;
-    private BigDecimal subTotal;
-    private BigDecimal descuento;
-    private BigDecimal gastosEnvio;
-    private BigDecimal totalVenta;
-
-    private ClienteFullDto cliente;
-
-    private List<PedidoVentaFullDto> listaPedidoVenta;
-
-    private List<FacturaVentaDetalleFullDto> listaFacturaVentaDetalle;
-
-    private DatosMercadoPago datosMercadoPago;
+    private Double totalVenta;
 }
