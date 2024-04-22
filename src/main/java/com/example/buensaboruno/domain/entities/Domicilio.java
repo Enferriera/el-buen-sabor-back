@@ -30,8 +30,4 @@ public class Domicilio extends Base{
     private Localidad localidad;
 
 
-    @ManyToMany(mappedBy = "domicilios")
-    @Builder.Default
-    private Set<Cliente> clientes = new HashSet<>();
-
 }
