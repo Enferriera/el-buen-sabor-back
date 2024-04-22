@@ -2,21 +2,31 @@ package com.example.buensaboruno.domain.dtos;
 
 
 
+
 import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+
 @ToString
 
 public class ArticuloManufacturadoFullDto extends BaseFullDto {
     private String denominacion;
     private String descripcion;
     private double precioVenta;
+
     private Integer tiempoEstimadoMinutos;
 
 
@@ -32,6 +42,5 @@ public class ArticuloManufacturadoFullDto extends BaseFullDto {
 
 
     private Set<ArticuloInsumoFullDto> articulosInsumos = new HashSet<>();
-
 
 }

@@ -2,10 +2,14 @@ package com.example.buensaboruno.domain.dtos;
 
 
 
+
 import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
+
+
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,4 +24,5 @@ public class EmpresaFullDto extends BaseFullDto {
 
 
     private Set<SucursalFullDto> listaSucursal= new HashSet<>();
+
 }

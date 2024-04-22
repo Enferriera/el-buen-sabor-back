@@ -1,7 +1,9 @@
 package com.example.buensaboruno.domain.dtos;
 
 
+
 import lombok.*;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,4 +13,5 @@ import lombok.*;
 
 public class PaisFullDto extends BaseFullDto {
     private String nombre;
+
 }

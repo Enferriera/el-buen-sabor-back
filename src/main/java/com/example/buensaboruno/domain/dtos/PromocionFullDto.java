@@ -1,7 +1,7 @@
 package com.example.buensaboruno.domain.dtos;
 
-import com.example.buensaboruno.domain.entities.ArticuloInsumo;
-import com.example.buensaboruno.domain.entities.ArticuloManufacturado;
+
+
 import lombok.*;
 
 
@@ -28,4 +28,5 @@ public class PromocionFullDto extends BaseFullDto{
     private Set<ArticuloInsumoFullDto> listaArticuloInsumo=new HashSet<>();
 
     private Set<ArticuloManufacturadoFullDto> listaArticuloManufacturado= new HashSet<>();
+
 }

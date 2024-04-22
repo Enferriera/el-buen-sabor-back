@@ -1,5 +1,6 @@
 package com.example.buensaboruno.domain.dtos;
 
+
 import lombok.*;
 
 
@@ -14,4 +15,5 @@ public class BaseFullDto {
     private Long id;
 
     private boolean isActive;
+
 }

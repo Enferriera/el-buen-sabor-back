@@ -1,6 +1,7 @@
 package com.example.buensaboruno.domain.dtos;
 
 
+
 import lombok.*;
 
 @AllArgsConstructor
@@ -14,4 +15,5 @@ public class ProvinciaFullDto {
 
 
     private PaisFullDto pais;
+
 }
