@@ -23,7 +23,7 @@ import lombok.Setter;
 
 @ToString
 
-public class ArticuloManufacturadoDto extends BaseDto {
+public class ArticuloManufacturadoDto extends ArticuloDto {
     private String descripcion;
     private Integer tiempoEstimadoMinutos;
     private String preparacion;

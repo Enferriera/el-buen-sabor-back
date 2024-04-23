@@ -4,5 +4,5 @@ import com.example.buensaboruno.domain.entities.ArticuloInsumo;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,Long> {
+public interface ArticuloInsumoRepository extends ArticuloRepository<ArticuloInsumo,Long> {
 }

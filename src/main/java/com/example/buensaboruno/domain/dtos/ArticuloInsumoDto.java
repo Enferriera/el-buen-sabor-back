@@ -12,7 +12,7 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-public class ArticuloInsumoDto extends BaseDto {
+public class ArticuloInsumoDto extends ArticuloDto {
     private Double precioCompra;
     private Integer stockActual;
     private Integer stockMaximo;

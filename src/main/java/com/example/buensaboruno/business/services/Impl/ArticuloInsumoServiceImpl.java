@@ -6,6 +6,6 @@ import com.example.buensaboruno.repositories.BaseRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Long> implements IArticuloInsumoService {
+public class ArticuloInsumoServiceImpl extends ArticuloServiceImpl<ArticuloInsumo,Long> implements IArticuloInsumoService {
 
 }

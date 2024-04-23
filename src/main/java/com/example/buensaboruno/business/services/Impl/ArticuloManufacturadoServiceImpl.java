@@ -6,6 +6,6 @@ import com.example.buensaboruno.repositories.BaseRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloManufacturado,Long> implements IArticuloManufacturadoService {
+public class ArticuloManufacturadoServiceImpl extends ArticuloServiceImpl<ArticuloManufacturado,Long> implements IArticuloManufacturadoService {
 
 }

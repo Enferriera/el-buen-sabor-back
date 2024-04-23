@@ -6,6 +6,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,14 +18,19 @@ import java.util.Set;
 @Setter
 @SuperBuilder
 @Audited
-public  class Articulo extends Base {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Articulo implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    protected Long id;
+
     protected String denominacion;
     protected Double precioVenta;
 
     @ManyToMany(mappedBy = "articulos")
     //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
     @Builder.Default
-    private Set<Promocion> estaEnPromociones = new HashSet<>();
+    protected Set<Promocion> estaEnPromociones = new HashSet<>();
 
     @OneToMany
     //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
@@ -33,10 +39,10 @@ public  class Articulo extends Base {
     //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
     @Builder.Default
     @NotAudited
-    private Set<Imagen> imagenes = new HashSet<>();
+    protected Set<Imagen> imagenes = new HashSet<>();
 
     @ManyToOne
-    private UnidadMedida unidadMedida;
+    protected UnidadMedida unidadMedida;
 
 
 }

@@ -167,7 +167,9 @@ public class BuensaborunoApplication {
 			harina.getImagenes().add(imagenHarina);
 			queso.getImagenes().add(imagenQueso);
 			tomate.getImagenes().add(imagenTomate);
+
 			articuloInsumoRepository.save(cocaCola);
+
 			articuloInsumoRepository.save(harina);
 			articuloInsumoRepository.save(queso);
 			articuloInsumoRepository.save(tomate);
@@ -271,6 +273,7 @@ public class BuensaborunoApplication {
 
 			DetallePedido detallePedido1 = DetallePedido.builder().articulo(pizzaMuzarella).cantidad(1).subTotal(200.0).build();
 			DetallePedido detallePedido2 = DetallePedido.builder().articulo(cocaCola).cantidad(2).subTotal(100.0).build();
+
 
 			pedido.getDetallePedidos().add(detallePedido1);
 			pedido.getDetallePedidos().add(detallePedido2);
