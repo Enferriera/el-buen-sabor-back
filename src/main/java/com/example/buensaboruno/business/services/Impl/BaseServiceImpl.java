@@ -15,43 +15,48 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
     protected BaseRepository<E, ID> baseRepository;
 
 
-//    public BaseServiceImpl(BaseRepository<E, ID> baseRepository) {
-//        this.baseRepository = baseRepository;
-//    }
-
     @Override
     @Transactional
-    public List<E> findAll() throws Exception {
+    public List<E> findAll()  {
         List<E> entities = baseRepository.findAll();
         return entities;
     }
 
     @Override
     @Transactional
-    public E findById(ID id) throws Exception {
-        Optional<E> entityOptional = baseRepository.findById(id);
-        return entityOptional.get();
+    public E findById(ID id)  {
+        var optionalEntity = baseRepository.findById(id);
+
+        if (optionalEntity.isEmpty()){
+            throw new RuntimeException("No se encontro una entidad con el id " + id);
+        }
+        var entity = optionalEntity.get();
+        return entity;
     }
 
     @Override
     @Transactional
-    public E save(E entity) throws Exception {
+    public E save(E entity)  {
         entity = baseRepository.save(entity);
         return entity;
     }
 
     @Override
     @Transactional
-    public E update(ID id, E entity) throws Exception {
-        Optional<E> entityOptional = baseRepository.findById(id);
-        E ent = entityOptional.get();
-        ent = baseRepository.save(entity);
-        return ent;
+    public E update(E entity)  {
+        var optionalEntity = baseRepository.findById((ID) entity.getId());
+        if (optionalEntity.isEmpty()){
+
+            throw new RuntimeException("No se encontro una entidad con el id " + entity.getId());
+        }
+        var newEntity = baseRepository.save(entity);
+
+        return newEntity;
     }
 
     @Override
     @Transactional
-    public boolean delete(ID id) throws Exception {
+    public void delete(ID id)  {
         if (baseRepository.existsById(id)) {
             Optional<E> entityOptional = baseRepository.findById(id);
 
@@ -60,9 +65,8 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
 
             ent = baseRepository.save(ent);
 
-            return true;
         } else {
-            throw new RuntimeException();
+            throw new RuntimeException("No se encontro una entidad con el id " + id);
         }
     }
 }
