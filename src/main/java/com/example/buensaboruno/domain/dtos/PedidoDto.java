@@ -1,5 +1,6 @@
 package com.example.buensaboruno.domain.dtos;
 
+
 import com.example.buensaboruno.domain.enums.Estado;
 import com.example.buensaboruno.domain.enums.FormaPago;
 import com.example.buensaboruno.domain.enums.TipoEnvio;
@@ -15,7 +16,7 @@ import java.util.Set;
 @Getter
 @ToString
 
-public class PedidoFullDto extends BaseFullDto{
+public class PedidoDto extends BaseDto {
     private LocalTime horaEstimadaFinalizacion;
     private Double total;
     private Double totalCosto;
@@ -24,13 +25,12 @@ public class PedidoFullDto extends BaseFullDto{
     private FormaPago formaPago;
     private LocalDate fechaPedido;
 
+    private DomicilioDto domicilio;
 
-    private DomicilioFullDto domicilio;
+    private SucursalDto sucursal;
 
+    private FacturaDto factura;
 
-
-    private FacturaFullDto factura;
-
-    private Set<DetallePedidoFullDto> detallePedidos = new HashSet<>();
+    private Set<DetallePedidoDto> detallePedidos = new HashSet<>();
 
 }

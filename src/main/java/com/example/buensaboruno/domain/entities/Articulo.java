@@ -38,9 +38,5 @@ public  class Articulo extends Base {
     @ManyToOne
     private UnidadMedida unidadMedida;
 
-    public Articulo(String denominacion, Double precioVenta, UnidadMedida unidadMedida){
-        this.denominacion = denominacion;
-        this.precioVenta = precioVenta;
-        this.unidadMedida = unidadMedida;
-    }
+
 }

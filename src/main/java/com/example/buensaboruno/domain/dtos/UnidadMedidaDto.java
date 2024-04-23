@@ -1,9 +1,7 @@
 package com.example.buensaboruno.domain.dtos;
 
 
-
 import lombok.*;
-
 
 
 @AllArgsConstructor
@@ -12,9 +10,7 @@ import lombok.*;
 @Getter
 @ToString
 
-public class LocalidadFullDto extends BaseFullDto{
-    private String nombre;
+public class UnidadMedidaDto extends BaseDto {
+    private String denominacion;
 
-
-    private ProvinciaFullDto provincia;
 }

@@ -22,16 +22,12 @@ import java.util.Set;
 @Audited
 public class Sucursal extends  Base{
 
-
     private String nombre;
     private LocalTime horarioApertura;
     private LocalTime horarioCierre;
 
     @OneToOne
     private Domicilio domicilio;
-
-
-
 
     @ManyToMany
     //SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY

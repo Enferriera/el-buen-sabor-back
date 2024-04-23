@@ -1,7 +1,10 @@
 package com.example.buensaboruno.domain.dtos;
 
 
+
 import lombok.*;
+
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,18 +17,19 @@ import java.util.Set;
 @ToString
 
 
-public class ClienteFullDto extends BaseFullDto {
+public class ClienteDto extends BaseDto {
     private String nombre;
     private String apellido;
     private String telefono;
     private String email;
 
+    private UsuarioDto usuario;
 
+    private ImagenDto imagen;
 
-    private UsuarioFullDto usuario;
+    private Set<PedidoDto> pedidos = new HashSet<>();
 
-
-    private Set<PedidoFullDto> listaPedido=new HashSet<>();
+    private Set<DomicilioDto> domicilios = new HashSet<>();
 
 
 }

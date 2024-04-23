@@ -1,6 +1,7 @@
 package com.example.buensaboruno.domain.dtos;
 
 
+
 import lombok.*;
 
 import java.time.LocalTime;
@@ -13,17 +14,14 @@ import java.util.Set;
 @Getter
 @ToString
 
-public class SucursalFullDto extends BaseFullDto {
+public class SucursalDto extends BaseDto {
     private String nombre;
     private LocalTime horarioApertura;
     private LocalTime horarioCierre;
 
+    private DomicilioDto domicilio;
 
-    private DomicilioFullDto domicilio;
+    private Set<CategoriaDto> categorias = new HashSet<>();
 
-
-    private Set<PromocionFullDto> listaPromocion= new HashSet<>();
-
-
-    private Set<CategoriaFullDto> listaCategoria= new HashSet<>();
+    private Set<PromocionDto> promociones = new HashSet<>();
 }

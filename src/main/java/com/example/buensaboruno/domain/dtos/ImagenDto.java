@@ -1,8 +1,6 @@
 package com.example.buensaboruno.domain.dtos;
 
-
 import lombok.*;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,7 +8,6 @@ import lombok.*;
 @Getter
 @ToString
 
-public class UnidadMedidaFullDto extends BaseFullDto {
-    private String denominacion;
-
+public class ImagenDto extends BaseDto {
+    private String url;
 }

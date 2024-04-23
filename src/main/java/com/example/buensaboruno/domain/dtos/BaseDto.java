@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class BaseFullDto {
+public class BaseDto {
 
 
     private Long id;

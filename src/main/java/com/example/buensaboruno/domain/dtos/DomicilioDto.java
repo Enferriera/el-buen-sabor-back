@@ -9,13 +9,12 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-public class DomicilioFullDto extends BaseFullDto {
+public class DomicilioDto extends BaseDto {
     private String calle;
     private int numero;
     private int cp;
 
-
-    private LocalidadFullDto localidad;
+    private LocalidadDto localidad;
 
 
 }

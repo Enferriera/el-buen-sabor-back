@@ -17,12 +17,12 @@ import java.util.Set;
 @Getter
 @ToString
 
-public class EmpresaFullDto extends BaseFullDto {
+public class EmpresaDto extends BaseDto {
     private String nombre;
     private String razonSocial;
     private Integer cuil;
 
 
-    private Set<SucursalFullDto> listaSucursal= new HashSet<>();
+    private Set<SucursalDto> listaSucursal= new HashSet<>();
 
 }
