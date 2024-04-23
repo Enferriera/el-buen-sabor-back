@@ -19,7 +19,7 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 @Audited
 public class Pedido extends Base{
 

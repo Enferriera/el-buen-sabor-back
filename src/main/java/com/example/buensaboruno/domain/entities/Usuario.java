@@ -13,7 +13,7 @@ import org.hibernate.envers.Audited;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 @Audited
 public class Usuario  extends Base{
     private String auth0Id;

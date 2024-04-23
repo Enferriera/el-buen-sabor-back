@@ -61,9 +61,9 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
             Optional<E> entityOptional = baseRepository.findById(id);
 
             E ent = entityOptional.get();
-            ent.setActive(false);
+            ent.setEstaActivo(false);
 
-            ent = baseRepository.save(ent);
+             baseRepository.save(ent);
 
         } else {
             throw new RuntimeException("No se encontro una entidad con el id " + id);

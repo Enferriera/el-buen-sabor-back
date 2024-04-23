@@ -9,11 +9,10 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class BaseDto {
-
+public abstract class BaseDto {
 
     private Long id;
 
-    protected boolean isActive;
+    protected boolean estaActivo;
 
 }

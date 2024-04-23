@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 @Audited
 public class UnidadMedida extends Base{
 

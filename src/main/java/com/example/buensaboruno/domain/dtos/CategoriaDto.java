@@ -10,7 +10,7 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-public class CategoriaDto {
+public class CategoriaDto extends BaseDto {
 
     private String denominacion;
 

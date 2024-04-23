@@ -16,7 +16,7 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 @Audited
 public class Cliente extends Base{
     private String nombre;

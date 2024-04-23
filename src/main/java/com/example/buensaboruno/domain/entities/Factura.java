@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 @Audited
 public class Factura extends Base{
     private LocalDate fechaFcturacion;

@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @ToString
 
-public class ProvinciaDto {
+public class ProvinciaDto extends BaseDto {
     private String nombre;
 
 

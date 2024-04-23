@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 public class Pais extends Base{
     private String nombre;
 

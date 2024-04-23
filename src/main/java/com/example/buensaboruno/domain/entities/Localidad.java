@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 public class Localidad extends Base{
     private String nombre;
 

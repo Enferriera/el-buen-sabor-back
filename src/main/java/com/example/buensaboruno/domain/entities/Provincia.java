@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 public class Provincia extends Base {
     private String nombre;
 

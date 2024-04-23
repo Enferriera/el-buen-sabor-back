@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 public class Imagen extends Base{
 
     private String url;

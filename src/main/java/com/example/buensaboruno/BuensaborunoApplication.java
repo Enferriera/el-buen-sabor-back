@@ -96,6 +96,9 @@ public class BuensaborunoApplication {
 			Localidad localidad4 = Localidad.builder().nombre("Mar de las Pampas").provincia(provincia2).build();
 
 			paisRepository.save(pais1);
+
+
+			System.out.println(pais1.isEstaActivo());
 			provinciaRepository.save(provincia1);
 			provinciaRepository.save(provincia2);
 			localidadRepository.save(localidad1);

@@ -15,7 +15,7 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 @Audited
 public class Categoria extends Base{
     private String denominacion;

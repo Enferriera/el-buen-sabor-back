@@ -20,7 +20,7 @@ import java.util.Set;
 @Setter
 @Getter
 @ToString
-@SuperBuilder
+@Builder
 @Audited
 public class Promocion  extends Base{
     private String denominacion;
