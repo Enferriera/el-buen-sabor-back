@@ -13,12 +13,14 @@ import java.util.List;
 
 @Service
 public class CategoriaFacadeImpl extends BaseFacadeImpl<Categoria, CategoriaDto,Long> implements ICategoriaFacade {
+    @Autowired
+    private ICategoriaService categoriaService;
     public CategoriaFacadeImpl(IBaseService<Categoria, Long> baseService, IBaseMapper<Categoria, CategoriaDto> baseMapper) {
         super(baseService, baseMapper);
     }
 
-    @Autowired
-    private ICategoriaService categoriaService;
+
+
 
     @Override
     public CategoriaDto asignarSubcategorias(Long id, List<Long> subcategoriasIds) {
