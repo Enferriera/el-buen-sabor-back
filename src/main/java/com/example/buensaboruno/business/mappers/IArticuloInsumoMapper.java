@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface IArticuloInsumoMapper extends IBaseMapper<ArticuloInsumo, ArticuloInsumoDto> {
+public interface IArticuloInsumoMapper extends IArticuloMapper<ArticuloInsumo, ArticuloInsumoDto> {
 
     ArticuloInsumoDto toDTO(ArticuloInsumo source);
     ArticuloInsumo toEntity(ArticuloInsumoDto source);

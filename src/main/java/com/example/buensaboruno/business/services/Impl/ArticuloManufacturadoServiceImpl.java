@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloManufacturado,Long> implements IArticuloManufacturadoService {
+public class ArticuloManufacturadoServiceImpl extends ArticuloServiceImpl<ArticuloManufacturado,Long> implements IArticuloManufacturadoService {
     @Autowired
     private IImagenService imagenService;
     @Autowired

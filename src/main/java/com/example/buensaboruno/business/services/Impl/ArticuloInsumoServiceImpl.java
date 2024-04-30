@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Long> implements IArticuloInsumoService {
+public class ArticuloInsumoServiceImpl extends ArticuloServiceImpl<ArticuloInsumo,Long> implements IArticuloInsumoService {
 
     @Autowired
     private IImagenService imagenService;

@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface IArticuloManufacturadoMapper extends IBaseMapper<ArticuloManufacturado, ArticuloManufacturadoDto>{
+public interface IArticuloManufacturadoMapper extends IArticuloMapper<ArticuloManufacturado, ArticuloManufacturadoDto>{
 
     ArticuloManufacturadoDto toDTO(ArticuloManufacturado source);
     ArticuloManufacturado toEntity(ArticuloManufacturadoDto source);

@@ -6,6 +6,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,8 +17,12 @@ import java.util.Set;
 @ToString
 @Setter
 @SuperBuilder
-@Audited
-public  class Articulo extends Base {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Articulo implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    protected Long id;
+    protected boolean estaActivo;
     protected String denominacion;
     protected Double precioVenta;
 
