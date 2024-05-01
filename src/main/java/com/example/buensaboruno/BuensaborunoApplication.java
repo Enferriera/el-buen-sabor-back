@@ -247,13 +247,15 @@ public class BuensaborunoApplication {
 			domicilioRepository.save(domicilioCliente);
 			Usuario usuario = Usuario.builder().userName("sebastian").auth0Id("9565a49d-ecc1-4f4e-adea-6cdcb7edc4a3").build();
 			usuarioRepository.save(usuario);
-			Cliente cliente = Cliente.builder().usuario(usuario)
-					.imagen(imagenCliente)
-					.email("correoFalso@gmail.com")
-					.nombre("Sebastian")
-					.apellido("Wilder")
-					.telefono("2615920825")
-					.build();
+
+			Cliente cliente = new Cliente();
+
+			cliente.setImagen(imagenCliente);
+			cliente.setEmail("correoFalso@gmail.com");
+			cliente.setNombre("Sebastian");
+			cliente.setApellido("Wilder");
+			cliente.setUsuario(usuario);
+			cliente.setTelefono("2615920825");
 			cliente.getDomicilios().add(domicilioCliente);
 			clienteRepository.save(cliente);
 

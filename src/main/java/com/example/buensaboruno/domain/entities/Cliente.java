@@ -18,18 +18,8 @@ import java.util.Set;
 @ToString
 @Builder
 @Audited
-public class Cliente extends Base{
-    private String nombre;
-    private String apellido;
-    private String telefono;
-    private String email;
+public class Cliente extends Persona{
 
-    @OneToOne
-    private Usuario usuario;
-
-    @OneToOne
-    @NotAudited
-    private Imagen imagen;
 
     @OneToMany
     //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
@@ -39,12 +29,5 @@ public class Cliente extends Base{
     @Builder.Default
     private Set<Pedido> pedidos = new HashSet<>();
 
-    @ManyToMany
-    //SE AGREGA EL JOIN TABLE PARA QUE JPA CREE LA TABLA INTERMEDIA EN UNA RELACION MANY TO MANY
-    @JoinTable(name = "cliente_domicilio",
-            joinColumns = @JoinColumn(name = "cliente_id"),
-            inverseJoinColumns = @JoinColumn(name = "domicilio_id"))
-    //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
-    @Builder.Default
-    private Set<Domicilio> domicilios = new HashSet<>();
+
 }

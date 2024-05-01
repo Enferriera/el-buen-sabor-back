@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ClienteServiceImpl extends BaseServiceImpl<Cliente,Long> implements IClienteService {
+public class ClienteServiceImpl extends PersonaServiceImpl<Cliente,Long> implements IClienteService {
 
     @Autowired
     private IDomicilioService domicilioService;
