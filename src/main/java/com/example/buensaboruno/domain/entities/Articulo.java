@@ -18,6 +18,7 @@ import java.util.Set;
 @Setter
 @SuperBuilder
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Audited
 public abstract class Articulo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

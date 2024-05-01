@@ -38,8 +38,4 @@ public class SucursalEmpresa extends  Base{
     @OneToMany(mappedBy = "sucursalEmpresa")
     private List<Empleado> listaEmpleados;
 
-    @OneToMany(mappedBy = "sucursalEmpresa")
-    private List<ArticuloManufacturado> listaArticulosManufacturado;
-
-
 }
