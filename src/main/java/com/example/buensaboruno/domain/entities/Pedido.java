@@ -20,7 +20,6 @@ import java.util.Set;
 @Getter
 @ToString
 @Builder
-@Audited
 public class Pedido extends Base{
 
     private LocalTime horaEstimadaFinalizacion;
@@ -40,6 +39,9 @@ public class Pedido extends Base{
     @OneToOne
     private Factura factura;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
     @OneToMany(cascade = CascadeType.ALL)
     //SE AGREGA EL JOIN COLUMN PARA QUE JPA NO CREE LA TABLA INTERMEDIA EN UNA RELACION ONE TO MANY
@@ -48,4 +50,8 @@ public class Pedido extends Base{
     //SE AGREGA EL BUILDER.DEFAULT PARA QUE BUILDER NO SOBREESCRIBA LA INICIALIZACION DE LA LISTA
     @Builder.Default
     private Set<DetallePedido> detallePedidos = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "empleado_id")
+    private Empleado empleado;
 }
