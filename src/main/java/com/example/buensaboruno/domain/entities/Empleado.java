@@ -2,33 +2,29 @@
 
     import com.example.buensaboruno.domain.enums.Rol;
     import jakarta.persistence.*;
-    import lombok.AllArgsConstructor;
-    import lombok.Getter;
-    import lombok.NoArgsConstructor;
-    import lombok.Setter;
+    import lombok.*;
     import org.hibernate.envers.Audited;
     import org.hibernate.envers.RelationTargetAuditMode;
 
+    import java.util.HashSet;
     import java.util.List;
+    import java.util.Set;
 
     @Entity
     @AllArgsConstructor
     @NoArgsConstructor
     @Setter
     @Getter
+    @Builder
+    @Audited
     public class Empleado extends Persona{
 
-        @ManyToOne
-        @JoinColumn(name = "sucursalEmpresa_id")
-        private SucursalEmpresa sucursalEmpresa;
-
-        @OneToMany(mappedBy = "empleado",cascade = CascadeType.ALL)
-        private List<PedidoVenta> listaPedidoVenta;
 
         private Rol tipoEmpleado;
 
         @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
-        private List<Pedido> pedidos;
+        @Builder.Default
+        private Set<Pedido> pedidos= new HashSet<>();
 
         @ManyToOne
         @JoinColumn(name = "sucursal_id")

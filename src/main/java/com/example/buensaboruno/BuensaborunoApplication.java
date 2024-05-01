@@ -1,10 +1,7 @@
 package com.example.buensaboruno;
 
 import com.example.buensaboruno.domain.entities.*;
-import com.example.buensaboruno.domain.enums.Estado;
-import com.example.buensaboruno.domain.enums.FormaPago;
-import com.example.buensaboruno.domain.enums.TipoEnvio;
-import com.example.buensaboruno.domain.enums.TipoPromocion;
+import com.example.buensaboruno.domain.enums.*;
 import com.example.buensaboruno.repositories.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,7 +77,7 @@ public class BuensaborunoApplication {
 	}
 
 	@Bean
-	CommandLineRunner init() {
+	CommandLineRunner init(EmpleadoRepository empleadoRepository) {
 		return args -> {
 			logger.info("----------------ESTOY----FUNCIONANDO---------------------");
 			// Etapa del dashboard
@@ -243,10 +240,14 @@ public class BuensaborunoApplication {
 			//Crea un cliente y un usuario
 			Imagen imagenCliente = Imagen.builder().url("https://hips.hearstapps.com/hmg-prod/images/la-la-land-final-1638446140.jpg").build();
 			imagenRepository.save(imagenCliente);
+			Imagen imagenEmpleado = Imagen.builder().url("https://hips.hearstapps.com/hmg-prod/images/la-la-land-final-1638446140.jpg").build();
+			imagenRepository.save(imagenEmpleado);
 			Domicilio domicilioCliente = Domicilio.builder().cp(5519).calle("Cangallo").numero(800).piso(0).nroDpto(1).localidad(localidad1).build();
 			domicilioRepository.save(domicilioCliente);
 			Usuario usuario = Usuario.builder().userName("sebastian").auth0Id("9565a49d-ecc1-4f4e-adea-6cdcb7edc4a3").build();
 			usuarioRepository.save(usuario);
+			Usuario usuario2 = Usuario.builder().userName("martin").auth0Id("9565a49d-ecc1-4f4e-adea-6cdcb7edc43a").build();
+			usuarioRepository.save(usuario2);
 
 			Cliente cliente = new Cliente();
 
@@ -258,6 +259,19 @@ public class BuensaborunoApplication {
 			cliente.setTelefono("2615920825");
 			cliente.getDomicilios().add(domicilioCliente);
 			clienteRepository.save(cliente);
+
+			Empleado empleado=new Empleado();
+
+			empleado.setEmail("correoFalso@hotmail.com");
+			empleado.setTipoEmpleado(Rol.CAJERO);
+			empleado.setNombre("CorreoFalso");
+			empleado.setApellido("Falsin");
+			empleado.setUsuario(usuario2);
+			empleado.setImagen(imagenEmpleado);
+			empleado.setSucursal(sucursalGuaymallen);
+
+			empleadoRepository.save(empleado);
+
 
 			//Crea un pedido para el cliente
 			Pedido pedido = Pedido.builder().fechaPedido(LocalDate.now())
@@ -276,7 +290,10 @@ public class BuensaborunoApplication {
 
 			pedido.getDetallePedidos().add(detallePedido1);
 			pedido.getDetallePedidos().add(detallePedido2);
+			pedido.setCliente(cliente);
+			pedido.setEmpleado(empleado);
 			pedidoRepository.save(pedido);
+
 
 			logger.info("----------------Sucursal Chacras ---------------------");
 			logger.info("{}",sucursalGuaymallen);

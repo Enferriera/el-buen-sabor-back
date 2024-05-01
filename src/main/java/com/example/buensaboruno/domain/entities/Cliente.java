@@ -17,6 +17,7 @@ import java.util.Set;
 @Getter
 @ToString
 @Builder
+@Audited
 public class Cliente extends Persona{
 
 
